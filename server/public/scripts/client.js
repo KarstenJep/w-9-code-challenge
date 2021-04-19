@@ -14,6 +14,7 @@ function onReady() {
         console.log('clicked add joke button');
         postJoke();
     })
+    getJoke();
 }
 
 function postJoke() {
@@ -53,6 +54,14 @@ function getJoke() {
       console.log('After making server request...');
   }
 
-function render(joke) {
-    
+function render(jokes) {
+    console.log('in render', jokes);
+    $('#outputDiv').empty()
+    for (let joke of jokes) {
+        $('#outputDiv').append(`
+        <p>Whose Joke: ${joke.whoseJoke}</p>
+        <p>Joke Question: ${joke.jokeQuestion}</p>
+        <p>Punch Line: ${joke.punchLine}</p>
+        `) 
+    }
 }
