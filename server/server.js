@@ -6,6 +6,7 @@ const PORT = 5000;
 // use bodyParser.urlencoded throughout the app with this:
 app.use(bodyParser.urlencoded({ extended: true }));
 
+//joke array storing all jokes, including new jokes received from browser inputs
 let jokes = [
   {
     whoseJoke: "Danny",
@@ -47,7 +48,7 @@ app.get( '/joke', (req, res)  => {
 app.post('/joke', (req, res) => {
   let newJoke = req.body;
   console.log('Checking format of newJoke', newJoke);
-  jokes.push(newJoke);
+  jokes.unshift(newJoke);
   res.sendStatus(201);
 });
 
